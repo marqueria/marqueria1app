@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Cotizador de Marquería</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="manifest.json">
+
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 720px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+    h2 { text-align: center; }
+    h3 { border-bottom: 2px solid #ddd; padding-bottom: 6px; }
+    label { display: block; margin-top: 10px; font-size: 14px; }
+    input[type="text"], input[type="number"] {
+      width: 100%; padding: 8px; margin-top: 4px;
+      border-radius: 6px; border: 1px solid #ccc;
+    }
+    .materiales label {
+      display: flex; gap: 8px; margin-top: 6px;
+    }
+    button {
+      width: 100%; padding: 12px; margin-top: 10px;
+      border: none; border-radius: 8px;
+      font-size: 16px; cursor: pointer;
+    }
+    .calcular { background:#007bff; color:#fff; }
+    .reporte { background:#28a745; color:#fff; }
+    .limpiar { background:#6c757d; color:#fff; }
+    .borrar { background:#dc3545; color:#fff; }
+    pre { background:#f0f0f0; padding:15px; border-radius:8px; }
+  </style>
+</head>
+
+<body>
+<div class="container">
+
+<h2>Cotizador de Marquería</h2>
+
+<label>Cliente
+  <input type="text" id="cliente">
+</label>
+
+<h3>Marco</h3>
+
+<label>Largo (m)<input type="number" id="largo" step="0.01"></label>
+<label>Ancho (m)<input type="number" id="ancho" step="0.01"></label>
+<label>Cotillaje<input type="number" id="cotillaje" step="0.01"></label>
+<label>Costo marco / metro<input type="number" id="costoMarco" step="0.01"></label>
+<label>Mano de obra<input type="number" id="manoObra" step="0.01"></label>
+
+<h3>Vidrio / Materiales</h3>
+
+<label>Pulgada ancho<input type="number" id="pulgAncho"></label>
+<label>Pulgada alto<input type="number" id="pulgAlto"></label>
+
+<div class="materiales">
+  <label><input type="checkbox" class="material" value="1"> Tapa (1)</label>
+  <label><input type="checkbox" class="material" value="3"> Vidrio mate (3)</label>
+  <label><input type="checkbox" class="material" value="2"> Vidrio simple (2)</label>
+  <label><input type="checkbox" class="material" value="1"> Passpartú (1)</label>
+  <label><input type="checkbox" class="material" value="1"> Base (1)</label>
+  <label><input type="checkbox" class="material" value="1"> Foam (1)</label>
+  <label>Otros <input type="number" id="materialOtro" step="0.1"></label>
+</div>
+
+<button class="calcular" onclick="calcular()">CALCULAR</button>
+<button class="reporte" onclick="generarReporte()">REPORTE PDF</button>
+<button class="limpiar" onclick="limpiarFormulario()">LIMPIAR FORMULARIO</button>
+<button class="borrar" onclick="borrarHistorial()">BORRAR HISTORIAL</button>
+
+<pre id="resultado"></pre>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
